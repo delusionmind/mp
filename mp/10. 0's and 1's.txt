@@ -1,0 +1,30 @@
+.model small
+data segment
+n dw 1000h
+zero dw 01 dup(?)
+one dw 01 dup(?)
+data ends
+code segment
+assume cs:code,ds:data
+start:mov ax,data
+mov ds,ax
+mov ax,n
+mov bx,zero
+mov dx,one
+mov cx,10h
+l:
+rol ax,1
+jc o
+inc bx
+jmp nxt
+o:
+inc dx
+nxt:dec cx
+jnz l
+mov zero,bx
+mov one,dx
+mov ah,4ch
+int 21h
+code ends
+end start
+

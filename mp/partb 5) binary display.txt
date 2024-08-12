@@ -1,0 +1,26 @@
+#include<lpc21xx.h>
+void delay(void);
+unsigned int HexValue;
+int main()
+{
+unsigned int not_HexValue=0;
+PINSEL0=0x00000000;
+IO0DIR-0X00FF0000;
+while(1)
+{
+for(HexValue = 0;HexValue <= 0xff;HexValue++)
+{
+not_HexValue=(~HexValue);
+not_HexValue &= 0x000000FF;
+IO0PIN = (not_HexValue<<16);
+delay();
+}
+}
+}
+void delay(void)
+{
+unsigned int count;
+for(count=0;count<650000;count++)
+{}
+{}
+}
